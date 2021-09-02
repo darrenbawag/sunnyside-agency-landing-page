@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --tw-soft-red: hsl(7, 99%, 70%);
+        --tw-yellow: hsl(51, 100%, 49%);
+        --tw-dark-desaturated-cyan: hsl(167, 40%, 24%);
+        --tw-dark-blue: hsl(198, 62%, 26%);
+        --tw-dark-moderate-cyan: hsl(168, 34%, 41%);
+        --tw-very-dark-desaturated-blue: hsl(212, 27%, 19%);
+        --tw-very-dark-grayish-blue: hsl(213, 9%, 39%);
+        --tw-dark-grayish-blue: hsl(232, 10%, 55%);
+        --tw-grayish-blue: hsl(210, 4%, 67%);
+        --tw-white: hsl(0, 0%, 100%);
+        --tw-slight-desaturated-cyan: hsl(167, 44%, 70%);
+        --tw-cyan-blue: hsl(200, 100%, 72%);
+    }
+
+    body {
+        font-size: 18px;
+        line-height: 1.85rem;
+    }
+}
+
+@layer components {
+    .burger-button {
+        @apply lg:hidden;
+    }
+
+    .burger-button.show {
+        @apply opacity-50;
+    }
+
+    .burger-nav {
+        @apply relative transition-all duration-500 ease-in-out transform translate-y-16 opacity-0 invisible;
+    }
+
+    .burger-nav:before {
+        @apply w-0 absolute top-0 right-0 lg:hidden;
+        content: "";
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid white;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid white;
+        transform: translateY(-100%);
+    }
+
+    .burger-nav.show {
+        @apply translate-y-0 opacity-100 visible;
+    }
+
+    .more {
+        @apply relative inline-flex self-center md:self-start;
+    }
+
+    .more:after {
+        @apply rounded-full transition-all duration-300 ease-in-out opacity-50 absolute left-0 right-0 bottom-0 w-full transform -translate-y-full;
+        content: "";
+        height: 10px;
+        z-index: -1;
+        margin-bottom: -10px;
+    }
+
+    .more:hover:after {
+        @apply opacity-100;
+    }
+
+    .more-yellow:after {
+        @apply bg-yellow;
+    }
+
+    .more-soft-red:after {
+        @apply bg-soft-red;
+    }
+}
